@@ -1,10 +1,9 @@
 /*
-Name:		Aquaponie.ino
+Name:		Aquaponics.ino
 Created:	04/06/2017 16:44:23
 Author:	Olivier Turcotte
 */
 
-// the setup function runs once when you press reset or power the board
 #include <PS2Keyboard.h>
 
 // DIGITAL PINS 
@@ -34,11 +33,8 @@ void setup() {
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
 	Serial.begin(9600);
 	Serial.println("Keyboard Test:");
-	Serial.println(pin_i2c_clock);
-	pinMode(13, OUTPUT);
 }
 
-// the loop function runs over and over again until power down or reset
 void loop() {
 	keyboardRoutine();
 }
@@ -48,8 +44,6 @@ void keyboardRoutine() {
 		kbrd_input = keyboard.read();
 
 		Serial.println(kbrd_input);
-		kbrd_input = ' ';
-
 	}
 
 }
