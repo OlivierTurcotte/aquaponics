@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Aquaponics", "Aquaponics\Aquaponics.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PS2Keyboard-master", "..\..\..\Arduino\libraries\PS2Keyboard-master\PS2Keyboard-master.vcxitems", "{047F18A8-766C-4985-89E2-87CE34B5FA76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
