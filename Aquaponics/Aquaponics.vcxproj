@@ -83,10 +83,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FishFeeder.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Page.h" />
     <ClInclude Include="__vm\.Aquaponics.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FishFeeder.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Page.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

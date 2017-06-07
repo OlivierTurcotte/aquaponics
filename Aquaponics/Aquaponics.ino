@@ -14,6 +14,7 @@ Author:	Olivier Turcotte
 #define pin_relay_pump		(5)
 #define pin_relay_temp		(6)
 #define pin_relay_valve		(7)
+#define pin_lcd_power		(8)
 #define pin_led_pwm			(9)
 #define pin_ff_servo		(11)
 // ANALOG PINS 
@@ -25,42 +26,44 @@ Author:	Olivier Turcotte
 #define pin_i2c_clock		(19)
 
 
-
-char kbrd_input = ' ';
-int pos = 90;
-
 PS2Keyboard keyboard;
 FishFeeder	feeder;
+bool lcdInit = false;
 
 void setup() {
-	delay(1000);
-
+	delay(500);
+	//pinMode(pin_lcd_power,INPUT_PULLUP);
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
 	feeder.setup(pin_ff_servo);
+
 	Serial.begin(9600);
-	Serial.println("Keyboard Test:");
+	Serial.println("Keyboard input:");
 	
 }
 
 void loop() {
 
-	keyboardRoutine(); 
-	if (kbrd_input == 'f') {
-		feeder.feed();
-		kbrd_input = ' ';
-		
-	}	
+	//LCD 
+	/*switch (digitalRead(pin_lcd_power)) {
+	case HIGH:
+		lcdInit = false
+		break;
+	case LOW:
+		if (lcdInit == false) {
+			delay(100);
+			//initialisation du lcd
+			lcdInit = true;
+		}
+		break;
+	}*/
 
-}
-
-void keyboardRoutine() {
 	if (keyboard.available()) {
-		kbrd_input = keyboard.read();
-
-		Serial.println(kbrd_input);
+		
 	}
 
 }
+
+
 
 
 
