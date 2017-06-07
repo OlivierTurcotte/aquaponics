@@ -57,8 +57,10 @@ void loop() {
 		break;
 	}*/
 
-	if (keyboard.available()) {
-		
+	if (keyboard.available()){
+		switch (keyboard.read()) {
+			
+		}
 	}
 
 }
