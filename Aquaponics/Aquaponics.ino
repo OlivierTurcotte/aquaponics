@@ -6,6 +6,7 @@ Author:	Olivier Turcotte
 
 #include <Servo.h>
 #include <PS2Keyboard.h>
+#include "FishFeeder.h"
 
 // DIGITAL PINS 
 #define pin_kbrd_clock		(3)
@@ -26,27 +27,29 @@ Author:	Olivier Turcotte
 
 
 char kbrd_input = ' ';
-int pos = 0;
+int pos = 90;
 
 PS2Keyboard keyboard;
-Servo fishFeeder;
+FishFeeder	feeder;
 
 void setup() {
 	delay(1000);
+
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
-	fishFeeder.attach(pin_ff_servo);
+	feeder.setup(pin_ff_servo);
 	Serial.begin(9600);
 	Serial.println("Keyboard Test:");
 	
 }
 
 void loop() {
+
 	keyboardRoutine(); 
 	if (kbrd_input == 'f') {
+		feeder.feed();
 		kbrd_input = ' ';
-		feedFish();
 		
-	}
+	}	
 
 }
 
@@ -59,14 +62,5 @@ void keyboardRoutine() {
 
 }
 
-void feedFish() {
-	for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-										  // in steps of 1 degree
-		fishFeeder.write(pos);              // tell servo to go to position in variable 'pos'
-		delay(15);                       // waits 15ms for the servo to reach the position
-	}
-	for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-		fishFeeder.write(pos);              // tell servo to go to position in variable 'pos'
-		delay(15);                       // waits 15ms for the servo to reach the position
-	}
-}
+
+
