@@ -33,10 +33,10 @@ bool lcdInit = false;
 
 void setup() {
 	delay(500);
-	pinMode(pin_ir_sensor, INPUT);
+	
 	//pinMode(pin_lcd_power,INPUT_PULLUP);
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
-	feeder.setup(pin_ff_servo);
+	feeder.setup(pin_ff_servo, pin_ir_sensor);
 
 	Serial.begin(9600);
 	Serial.println("Keyboard input:");

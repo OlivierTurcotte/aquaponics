@@ -15,13 +15,18 @@ void FishFeeder::feed()
 		servo.write(position);              // tell servo to go to position in variable 'pos'
 		delay(15);                       // waits 15ms for the servo to reach the position
 	}
+	digitalWrite(pin_servo, HIGH);
 	Serial.println(digitalRead(pin_food));
+	// 1 = has food
+	// 0 = no food
+	digitalWrite(pin_servo, LOW);
 }
 void FishFeeder::setup(uint8_t servo_pin,uint8_t food_pin) {
 	servo.attach(servo_pin);
 	position = 13;
 	pin_servo = servo_pin;
 	pin_food = food_pin;
+	pinMode(pin_food, INPUT);
 	servo.write(position);
 
 }
