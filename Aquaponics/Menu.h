@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Page.h"
+#include "Arduino.h"
 class Menu
 {
 public:
@@ -12,7 +13,7 @@ protected:
 	char input;
 	uint8_t page;
 	uint8_t cursor;
-	String contenu[3][5]{
+	String contenu[3][5] = {
 		{ "MENU", "Capteurs", "Configurer","Nourrir","Fermer la pompe" },				//Page principal
 		{ "CAPTEURS", "Température eau","Temperature sol","Humidité","Luminosité" },	//Capteurs
 		{ "CONFIGURER","Heure","Luminosité","Fréquence des repas","Heure des repas" },	//Configurer

@@ -16,6 +16,7 @@ Author:	Olivier Turcotte
 #define pin_relay_valve		(7)
 #define pin_lcd_power		(8)
 #define pin_led_pwm			(9)
+#define pin_ir_sensor		(10)
 #define pin_ff_servo		(11)
 // ANALOG PINS 
 #define pin_light_sensor	(14)
@@ -32,6 +33,7 @@ bool lcdInit = false;
 
 void setup() {
 	delay(500);
+	pinMode(pin_ir_sensor, INPUT);
 	//pinMode(pin_lcd_power,INPUT_PULLUP);
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
 	feeder.setup(pin_ff_servo);
@@ -59,7 +61,8 @@ void loop() {
 
 	if (keyboard.available()){
 		switch (keyboard.read()) {
-			
+		case 'f':
+			feeder.feed();
 		}
 	}
 
