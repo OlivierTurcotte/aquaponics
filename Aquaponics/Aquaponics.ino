@@ -40,32 +40,18 @@ void setup() {
 
 	Serial.begin(9600);
 	Serial.println("Keyboard input:");
-	
+	//TEST
 }
 
 void loop() {
 
-	//LCD 
-	/*switch (digitalRead(pin_lcd_power)) {
-	case HIGH:
-		lcdInit = false
-		break;
-	case LOW:
-		if (lcdInit == false) {
-			delay(100);
-			//initialisation du lcd
-			lcdInit = true;
-		}
-		break;
-	}*/
-
-	if (keyboard.available()){
+	if (keyboard.available()) {
 		switch (keyboard.read()) {
 		case 'f':
 			feeder.feed();
+			break;
 		}
 	}
-
 }
 
 

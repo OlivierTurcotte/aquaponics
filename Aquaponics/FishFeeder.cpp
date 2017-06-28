@@ -16,10 +16,16 @@ void FishFeeder::feed()
 		delay(15);                       // waits 15ms for the servo to reach the position
 	}
 	digitalWrite(pin_servo, HIGH);
-	Serial.println(digitalRead(pin_food));
-	// 1 = has food
-	// 0 = no food
+	food_remaining = digitalRead(pin_food);
 	digitalWrite(pin_servo, LOW);
+	switch (food_remaining) {
+	case true:
+		Serial.println("food");
+		break;
+	case false:
+		Serial.println("no food");
+	}
+	
 }
 void FishFeeder::setup(uint8_t servo_pin,uint8_t food_pin) {
 	servo.attach(servo_pin);
@@ -29,6 +35,15 @@ void FishFeeder::setup(uint8_t servo_pin,uint8_t food_pin) {
 	pinMode(pin_food, INPUT);
 	servo.write(position);
 
+	digitalWrite(pin_servo, HIGH);
+	food_remaining = digitalRead(pin_food);
+	digitalWrite(pin_servo, LOW);
+
+	
+}
+
+bool FishFeeder::hasFood() {
+	return food_remaining;
 }
 
 
