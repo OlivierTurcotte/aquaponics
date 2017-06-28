@@ -4,9 +4,12 @@ Created:	04/06/2017 16:44:23
 Author:	Olivier Turcotte
 */
 
+
 #include <Servo.h>
 #include <PS2Keyboard.h>
 #include "FishFeeder.h"
+#include "Hygrometer.h"
+
 
 // DIGITAL PINS 
 #define pin_kbrd_clock		(3)
@@ -26,29 +29,28 @@ Author:	Olivier Turcotte
 #define pin_i2c_data		(18)
 #define pin_i2c_clock		(19)
 
-
+Hygrometer moisture;
 PS2Keyboard keyboard;
-FishFeeder	feeder;
+//FishFeeder	feeder;
 bool lcdInit = false;
 
 void setup() {
 	delay(500);
-	
-	//pinMode(pin_lcd_power,INPUT_PULLUP);
 	keyboard.begin(pin_kbrd_data, pin_kbrd_clock);
-	feeder.setup(pin_ff_servo, pin_ir_sensor);
-
+	
 	Serial.begin(9600);
 	Serial.println("Keyboard input:");
-	//TEST
+
+	moisture.setup(pin_hygrometer);
+
 }
 
 void loop() {
-
 	if (keyboard.available()) {
-		switch (keyboard.read()) {
-		case 'f':
-			feeder.feed();
+		switch (keyboard.read())
+		{
+		case 'h':
+			Serial.println(moisture.isMoist());
 			break;
 		}
 	}

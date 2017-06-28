@@ -83,11 +83,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FishFeeder.h" />
+    <ClInclude Include="Hygrometer.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="__vm\.Aquaponics.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FishFeeder.cpp" />
+    <ClCompile Include="Hygrometer.cpp" />
     <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
