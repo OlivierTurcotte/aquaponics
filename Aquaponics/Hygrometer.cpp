@@ -30,7 +30,6 @@ bool Hygrometer::isMoist() {
 	//Value getters
 	for (int i = 0; i < 10; i++) {
 		value[i] = analogRead(pin);
-		Serial.println(value[i]);
 		delay(500);
 	}
 	//Average part
@@ -39,8 +38,6 @@ bool Hygrometer::isMoist() {
 		average += value[i];
 	}
 	average = average / 10;
-	Serial.print("AVERAGE:");
-	Serial.println(average);
 	if (average < moisture_top) {
 		return true;
 	}

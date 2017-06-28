@@ -31,7 +31,7 @@ Author:	Olivier Turcotte
 
 Hygrometer moisture;
 PS2Keyboard keyboard;
-//FishFeeder	feeder;
+FishFeeder	feeder;
 bool lcdInit = false;
 
 void setup() {
@@ -41,6 +41,9 @@ void setup() {
 	Serial.begin(9600);
 	Serial.println("Keyboard input:");
 
+	//MY OBJECTS
+
+	feeder.setup(pin_ff_servo, pin_ir_sensor);
 	moisture.setup(pin_hygrometer);
 
 }
@@ -49,6 +52,10 @@ void loop() {
 	if (keyboard.available()) {
 		switch (keyboard.read())
 		{
+		case 'f':
+			feeder.feed();
+			break;
+
 		case 'h':
 			Serial.println(moisture.isMoist());
 			break;
